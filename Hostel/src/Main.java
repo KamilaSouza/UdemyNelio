@@ -18,8 +18,6 @@ public class Main {
         System.out.println("How many rooms will be rented?");
         int rent = sc.nextInt();
 
-
-
         for (int i = 0; i < rent; i++) {
             System.out.println("Rent #" + numberOfRent++);
             sc.nextLine();
