@@ -28,13 +28,13 @@ public class Main {
         System.out.print("Base salary: ");
         double workerBaseSalary = scanner.nextDouble();
 
-        Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel),workerBaseSalary, new Department(departmentName));
+        Worker worker = new Worker(workerName, WorkerLevel.valueOf(workerLevel), workerBaseSalary, new Department(departmentName));
 
         System.out.println("How many contracts to this worker? ");
         int n = scanner.nextInt();
 
-        for (int i=0; i<n; i++){
-            System.out.println("Enter contract number " + (i+1) + ":");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter contract number " + (i + 1) + ":");
             System.out.println("Data (DD/MM/YYYY): ");
             Date contractDate = simpleDateFormat.parse(scanner.next());
             System.out.println("Value per hour: ");
@@ -48,10 +48,10 @@ public class Main {
         System.out.println();
         System.out.println("Enter month and year to calculate income (MM/yyyy): ");
         String monthAndYear = scanner.next();
-        int month = Integer.parseInt(monthAndYear.substring(0,2));
+        int month = Integer.parseInt(monthAndYear.substring(0, 2));
         int year = Integer.parseInt(monthAndYear.substring(3));
         System.out.println("Name: " + worker.getName());
         System.out.println("Department: " + worker.getDepartment().getName());
-        System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f",worker.income(year,month)));
+        System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f", worker.income(year, month)));
     }
 }
