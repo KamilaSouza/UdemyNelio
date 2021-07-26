@@ -37,7 +37,6 @@ public class Main {
 
         System.out.println("How many items to this order? ");
         int n = scanner.nextInt();
-        Date moment = new Date();
 
         for (int i = 0; i < n; i++) {
             System.out.println("Enter #" + (i + 1) + " item data:");
