@@ -11,7 +11,7 @@ public class Main {
 
         //UPCASTING
         // the businessAccount is an account  "é um"
-        // atribuir uma subclass para uma superclass
+        // assign a subclass to a superclass
 
         Account account1 = businessAccount;
         Account account2 = new BusinessAccount(1003, "Pedro", 0.0, 200.0);
@@ -35,5 +35,18 @@ public class Main {
             account5.updateBalance();
             System.out.println("Update");
         }
+
+        Account account5 = new Account(1001, "Alex", 1000.0);
+        account5.withdraw(200.0);
+        System.out.println("Account 5 " + account5.getBalance()); //with discount
+
+        Account account6 = new SavingsAccount(1002, "Maria", 1000.0, 0.01);
+        account6.withdraw(200.0);
+        System.out.println("Account 6 " + account6.getBalance()); //without discount
+
+        Account account7 = new BusinessAccount(1003, "Joaquim", 1000.0, 500.0);
+        account7.withdraw(200.0);
+        System.out.println("Account 7 " + account7.getBalance());
+
     }
 }
