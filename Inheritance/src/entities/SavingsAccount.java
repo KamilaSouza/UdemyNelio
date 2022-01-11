@@ -1,6 +1,6 @@
 package entities;
 
-public class SavingsAccount extends Account {
+public final class SavingsAccount extends Account {
 
     private Double interestRate;
 
@@ -9,7 +9,7 @@ public class SavingsAccount extends Account {
     }
 
     public SavingsAccount(Integer number, String holder, Double balance, Double interestRate) {
-        super(number, holder, balance);
+        super(number, holder, balance); // executes the constructor of superclass account
         this.interestRate = interestRate;
     }
 
