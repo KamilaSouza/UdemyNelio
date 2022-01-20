@@ -23,7 +23,7 @@ public class Reservation {
 
     public long duration() {
         long difference = checkOut.getTime() - checkIn.getTime(); //difference between dates in milliseconds
-        return TimeUnit.DAYS.convert(difference, TimeUnit.MICROSECONDS);
+        return TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
     }
 
     public void updateDates(Date checkIn, Date checkOut) {
@@ -38,6 +38,7 @@ public class Reservation {
                 + ", check-in: "
                 + simpleDateFormat.format(checkIn)
                 + ", check-out: "
+                + simpleDateFormat.format(checkOut)
                 + ", "
                 + duration()
                 + " nights.";
