@@ -1,29 +1,29 @@
 
 
 import model.entities.Reservation;
+import model.exceptions.DomainException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws ParseException { //this method can throw an exception
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        System.out.print("Room number: ");
-        int number = scanner.nextInt();
-        System.out.print("Check-in date (dd/MM/yyyy): ");
-        Date checkIn = simpleDateFormat.parse(scanner.next());  //convert the input string in date
-        System.out.print("Check-out date (dd/MM/yyyy): ");
-        Date checkOut = simpleDateFormat.parse(scanner.next());
+        try {
+            System.out.print("Room number: ");
+            int number = scanner.nextInt();
+            System.out.print("Check-in date (dd/MM/yyyy): ");
+            Date checkIn = simpleDateFormat.parse(scanner.next());  //convert the input string in date
+            System.out.print("Check-out date (dd/MM/yyyy): ");
+            Date checkOut = simpleDateFormat.parse(scanner.next());
 
-        if (!checkOut.after(checkIn)) //compares if check out is not after check in   (!false)
-            System.out.println("Error in reservation: Check-out date must be after check-in date");
-        else {
             Reservation reservation = new Reservation(number, checkIn, checkOut);
             System.out.println("Reservation: " + reservation);
 
@@ -34,16 +34,21 @@ public class Main {
             System.out.print("Check-out date (dd/MM/yyyy): ");
             checkOut = simpleDateFormat.parse(scanner.next());
 
-            String error = reservation.updateDates(checkIn, checkOut);
-            if (error != null) {
-                System.out.println(error);
-            } else {
-                System.out.println(reservation);
-
-            }
-
-            scanner.close();
-
+            reservation.updateDates(checkIn, checkOut);
+            System.out.println(reservation);
         }
+        catch (ParseException e){
+            System.out.println("Invalid date form");
+        }
+        catch (DomainException e){
+            System.out.println(e.getMessage());
+        }
+        catch (RuntimeException e) {
+            System.out.println("Unexpected error");
+        }
+
+        scanner.close();
+
     }
 }
+
