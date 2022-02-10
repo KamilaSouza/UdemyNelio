@@ -10,7 +10,7 @@ public class RentalService {
 
     private TaxService taxService;
 
-    public RentalService(Double pricePerDay, Double pricePerHour, TaxService taxService) {
+    public RentalService(Double pricePerDay, Double pricePerHour, TaxService taxService) { //dependency injection "TaxService" by Main program
         this.pricePerDay = pricePerDay;
         this.pricePerHour = pricePerHour;
         this.taxService = taxService;
